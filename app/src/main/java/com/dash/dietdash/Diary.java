@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dash.adapter.DiaryListAdapter;
 import com.dash.handler.DataBaseHelper;
@@ -20,6 +21,8 @@ import com.dash.model.Pressure;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+
+import static com.dash.dietdash.R.id.listDiary;
 
 public class Diary extends AppCompatActivity {
 
@@ -35,8 +38,8 @@ public class Diary extends AppCompatActivity {
         SharedPreferences userDetails = getSharedPreferences("dietPrefs", MODE_PRIVATE);
         userEmail = userDetails.getString("emailKey", "");
 
-        listView = (ListView) findViewById(R.id.listDiary);
-        header = (View)getLayoutInflater().inflate(R.layout.list_view_header, null);
+        listView = (ListView) findViewById(listDiary);
+        header = (View) getLayoutInflater().inflate(R.layout.list_view_header, null);
         ((TextView) header.findViewById(R.id.txtHeader)).setText("CATATAN TEKANAN DARAH ANDA");
         listView.addHeaderView(header);
 
@@ -59,9 +62,21 @@ public class Diary extends AppCompatActivity {
                 new Pressure(7, 0, 0, R.drawable.day7, "", "")
         };
         for (int i = 0; i < listPressure.size(); i++) {
+            System.out.println("LIST DIARY : " + i + " " + listPressure.get(i).getSystolic() + "/" +
+                    listPressure.get(i).getDiastolic());
             p[i].setSystolic(listPressure.get(i).getSystolic());
             p[i].setDiastolic(listPressure.get(i).getDiastolic());
-            p[i].setInfo(listPressure.get(i).getInfo());
+            if (i > 0) {
+                if ((listPressure.get(i).getSystolic() != 0 && listPressure.get(i).getDiastolic() != 0) &&
+                        (listPressure.get(i).getSystolic() < listPressure.get(i - 1).getSystolic() ||
+                                listPressure.get(i).getDiastolic() < listPressure.get(i - 1).getDiastolic())) {
+                    p[i].setInfo("TURUN");
+                } else {
+                    p[i].setInfo("NAIK");
+                }
+            } else {
+                p[i].setInfo("BELUM ADA");
+            }
         }
 
         DiaryListAdapter adapter = new DiaryListAdapter(this, R.layout.diary_list_item, p);
@@ -94,12 +109,18 @@ public class Diary extends AppCompatActivity {
                                         Calendar c = Calendar.getInstance();
                                         SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
                                         String date = df.format(c.getTime());
-                                        Pressure temp = new Pressure(userEmail, pres.getDay(),
-                                                Integer.parseInt(((EditText) promptsView.findViewById(R.id.editSystolic)).getText().toString()),
-                                                Integer.parseInt(((EditText) promptsView.findViewById(R.id.editDiastolic)).getText().toString()),
-                                                date);
-                                        dbHelper.addPressure(temp);
-                                        showList();
+                                        if (!((EditText) promptsView.findViewById(R.id.editSystolic)).getText().toString().equals("") &&
+                                                !((EditText) promptsView.findViewById(R.id.editDiastolic)).getText().toString().equals("")) {
+                                            Pressure temp = new Pressure(userEmail, pres.getDay(),
+                                                    Integer.parseInt(((EditText) promptsView.findViewById(R.id.editSystolic)).getText().toString()),
+                                                    Integer.parseInt(((EditText) promptsView.findViewById(R.id.editDiastolic)).getText().toString()),
+                                                    date);
+                                            dbHelper.addPressure(temp);
+                                            showList();
+                                        } else{
+                                            Toast.makeText(getBaseContext(), "Please fill in your pressure!", Toast.LENGTH_SHORT).show();
+                                        }
+
                                     }
                                 })
                         .setNegativeButton("Cancel",

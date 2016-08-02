@@ -245,13 +245,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                         pressure.setImage(R.drawable.day7);
                         break;
                 }
-                if (pressure.getDay() > 1) {
-                    if (pressure.getSystolic() < listDiary.get(i - 1).getSystolic()) {
-                        pressure.setInfo("TURUN");
-                    } else {
-                        pressure.setInfo("NAIK");
-                    }
-                }
                 i++;
                 // Adding contact to list
                 listDiary.add(pressure);
@@ -268,7 +261,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put("Email", pressure.getEmail());
         values.put("Date", pressure.getDate());
-        System.out.println("DAY DB : " + pressure.getDay());
         values.put("Day", pressure.getDay());
         values.put("Systolic", pressure.getSystolic());
         values.put("Diastolic", pressure.getDiastolic());

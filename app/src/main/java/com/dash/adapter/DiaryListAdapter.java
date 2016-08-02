@@ -57,6 +57,8 @@ public class DiaryListAdapter extends ArrayAdapter<Pressure> {
         holder.txtInfo.setText("-> " + p.getInfo());
         if(p.getInfo().equals("NAIK")){
             holder.txtInfo.setTextColor(Color.RED);
+        } else{
+            holder.txtInfo.setTextColor(Color.BLUE);
         }
         holder.imgIcon.setImageResource(p.getImage());
 
