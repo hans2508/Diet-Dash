@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">DietDash</string>
+    <string-array name="activity_level">
+        <item>Choose activity</item>
+        <item>Sedentary</item>
+        <item>Moderately Active</item>
+        <item>Active</item>
+    </string-array>
+</resources>

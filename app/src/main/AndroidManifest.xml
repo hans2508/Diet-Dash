@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.dash.dietdash">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/logo"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".Login">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".SignUp" />
+        <activity android:name=".Profile" />
+        <activity android:name=".Main" />
+        <activity android:name=".About" />
+        <activity android:name=".Schedule" />
+        <activity android:name=".Diary" />
+        <activity android:name=".DetailSchedule" />
+        <activity android:name=".DetailBreakfast" />
+        <activity android:name=".DetailLunch" />
+        <activity android:name=".DetailDinner" />
+        <activity android:name=".DetailNutrition" />
+        <activity android:name=".DetailFruitMorning" />
+        <activity android:name=".DetailFruitEvening" />
+        <activity android:name=".DetailSnack" />
+        <activity android:name=".InputMenu" />
+        <activity android:name=".InputMenuDetail" />
+        <activity android:name=".InputMenuInfo" />
+        <activity android:name=".InputMenuList" />
+        <activity android:name=".Admin" />
+        <activity android:name=".UsersProfile" />
+        <activity android:name=".UsersProfileDay" />
+        <activity android:name=".UsersProfileDetail" />
+        <activity android:name=".UsersProfilePressure" />
+        <activity android:name=".UsersProfileList" />
+        <activity android:name=".NewMakanan"></activity>
+    </application>
+
+</manifest>

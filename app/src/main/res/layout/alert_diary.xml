@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_root"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:padding="10dp" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="How is you blood pressure condition today? "
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="18sp"
+        android:textColor="@color/colorPrimary"
+        android:fontFamily="serif"
+        android:textStyle="normal|bold" />
+
+    <EditText
+        android:id="@+id/editSystolic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Systolic"
+        android:fontFamily="serif">
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/editDiastolic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Diastolic"
+        android:fontFamily="serif">
+        <requestFocus />
+    </EditText>
+
+</LinearLayout>

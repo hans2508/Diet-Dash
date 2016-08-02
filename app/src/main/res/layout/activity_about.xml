@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_about"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.dash.dietdash.About">
+
+    <ImageView
+        android:layout_width="271dp"
+        android:layout_height="108dp"
+        app:srcCompat="@drawable/title"
+        android:id="@+id/imageView"
+        app:layout_constraintLeft_toLeftOf="@+id/activity_about"
+        app:layout_constraintTop_toTopOf="@+id/activity_about"
+        android:layout_marginTop="16dp"
+        app:layout_constraintRight_toRightOf="@+id/activity_about" />
+
+    <TextView
+        android:text="What is DASH?"
+        android:layout_width="310dp"
+        android:layout_height="30dp"
+        android:id="@+id/textView15"
+        android:textStyle="normal|bold"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:padding="5dp"
+        android:fontFamily="serif"
+        android:background="@color/colorPrimaryDark"
+        app:layout_constraintLeft_toLeftOf="@+id/activity_about"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        android:layout_marginTop="8dp"
+        app:layout_constraintRight_toRightOf="@+id/activity_about"
+        app:layout_constraintBottom_toTopOf="@+id/textView16"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:text="DASH adalah kepanjangan dari Approaches to Stop Hypertension. Diet DASH (DASH Diet) merupakan cara diet sehat yang ditujukan untuk membantu mencegah hipertensi (tekanan darah tinggi)."
+        android:layout_width="310dp"
+        android:layout_height="128dp"
+        android:id="@+id/textView16"
+        android:textSize="14sp"
+        android:padding="5dp"
+        android:background="@color/colorPrimary"
+        android:textColor="@android:color/white"
+        android:textStyle="normal|bold"
+        android:fontFamily="serif"
+        app:layout_constraintLeft_toLeftOf="@+id/imageView"
+        app:layout_constraintRight_toRightOf="@+id/imageView"
+        app:layout_constraintBottom_toTopOf="@+id/textView18"
+        android:layout_marginBottom="48dp" />
+
+    <TextView
+        android:text="What is the benefit of DASH?"
+        android:layout_width="310dp"
+        android:layout_height="33dp"
+        android:id="@+id/textView17"
+        android:textSize="18sp"
+        android:padding="5dp"
+        android:textStyle="normal|bold"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@android:color/white"
+        android:fontFamily="serif"
+        app:layout_constraintTop_toTopOf="@+id/activity_about"
+        android:layout_marginTop="304dp"
+        app:layout_constraintRight_toRightOf="@+id/textView16" />
+
+    <TextView
+        android:text="Dengan DASH Diet, maka Anda akan mengurangi asupan sodium (garam) dalam makanan serta memperbanyak variasi makanan yang mengandung zat-zat gizi yang bermanfaat untuk menurunkan tekanan darah seperti potasium, kalsium, dan magnesium."
+        android:layout_width="310dp"
+        android:layout_height="143dp"
+        android:id="@+id/textView18"
+        android:fontFamily="serif"
+        android:padding="5dp"
+        android:textStyle="normal|bold"
+        android:background="@color/colorPrimary"
+        android:textColor="@android:color/white"
+        android:textAlignment="viewStart"
+        app:layout_constraintTop_toBottomOf="@+id/textView17"
+        app:layout_constraintRight_toRightOf="@+id/textView17"
+        app:layout_constraintBottom_toBottomOf="@+id/activity_about"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintVertical_bias="0.0" />
+
+</android.support.constraint.ConstraintLayout>

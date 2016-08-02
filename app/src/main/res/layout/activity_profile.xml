@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_profile"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.dash.dietdash.Profile">
+
+    <Button
+        android:text="NEXT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnSaveProfile"
+        android:background="@drawable/mybutton"
+        app:layout_constraintLeft_toRightOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/editHg"
+        app:layout_constraintRight_toRightOf="@+id/textView8"
+        android:fontFamily="serif"
+        android:textSize="18sp"
+        android:textStyle="normal|bold"
+        android:textColor="@android:color/white"
+        android:onClick="nextToHome"
+        android:layout_below="@+id/button2"
+        android:layout_alignStart="@+id/button2"
+        android:layout_marginTop="13dp" />
+
+    <TextView
+        android:text="KG"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView5"
+        android:fontFamily="serif"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="normal|bold"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteY="184dp"
+        app:layout_constraintLeft_toRightOf="@+id/editWeight"
+        app:layout_constraintRight_toRightOf="@+id/textView8"
+        android:layout_alignBaseline="@+id/editWeight"
+        android:layout_alignBottom="@+id/editWeight"
+        android:layout_alignStart="@+id/textView14" />
+
+    <TextView
+        android:text="Hg"
+        android:layout_width="42dp"
+        android:layout_height="32dp"
+        android:id="@+id/textView9"
+        android:fontFamily="serif"
+        android:textStyle="normal|bold"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        app:layout_constraintLeft_toRightOf="@+id/textView5"
+        app:layout_constraintBottom_toTopOf="@+id/btnSaveProfile"
+        android:layout_alignBaseline="@+id/textView7"
+        android:layout_alignBottom="@+id/textView7"
+        android:layout_toEndOf="@+id/editHg" />
+
+    <TextView
+        android:text="BMR"
+        android:layout_width="53dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView10"
+        android:textStyle="normal|bold"
+        android:textSize="18sp"
+        android:fontFamily="serif"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintLeft_toLeftOf="@+id/editPressure"
+        app:layout_constraintTop_toBottomOf="@+id/btnSaveProfile"
+        android:layout_above="@+id/textView11"
+        android:layout_alignStart="@+id/textView3" />
+
+    <TextView
+        android:text="IMT"
+        android:layout_width="52dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView12"
+        android:textSize="18sp"
+        android:textStyle="normal|bold"
+        android:textColor="@color/colorPrimary"
+        android:fontFamily="serif"
+        tools:layout_editor_absoluteY="432dp"
+        app:layout_constraintRight_toRightOf="@+id/textView10"
+        android:layout_above="@+id/textView6"
+        android:layout_alignStart="@+id/textView11" />
+
+    <TextView
+        android:text="Pressure Cond."
+        android:layout_width="148dp"
+        android:layout_height="25dp"
+        android:id="@+id/textView13"
+        android:textStyle="normal|bold"
+        android:textColor="@color/colorPrimary"
+        android:fontFamily="serif"
+        android:textSize="18sp"
+        android:textAlignment="viewStart"
+        app:layout_constraintLeft_toLeftOf="@+id/textView11"
+        app:layout_constraintTop_toBottomOf="@+id/textAKG"
+        android:layout_marginBottom="27dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/textView6" />
+
+    <TextView
+        android:text="Ideal Weight"
+        android:layout_width="120dp"
+        android:layout_height="25dp"
+        android:id="@+id/textView6"
+        android:textStyle="normal|bold"
+        android:textColor="@color/colorPrimary"
+        android:fontFamily="serif"
+        android:textSize="18sp"
+        android:textAlignment="viewStart"
+        app:layout_constraintLeft_toLeftOf="@+id/textView11"
+        app:layout_constraintTop_toBottomOf="@+id/textAKG"
+        android:layout_above="@+id/textView13"
+        android:layout_alignStart="@+id/textView12" />
+
+    <TextView
+        android:text="AKG"
+        android:layout_width="54dp"
+        android:layout_height="26dp"
+        android:id="@+id/textView11"
+        android:fontFamily="serif"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="normal|bold"
+        android:textSize="18sp"
+        app:layout_constraintLeft_toLeftOf="@+id/editPressure"
+        app:layout_constraintTop_toBottomOf="@+id/textBMR"
+        android:layout_above="@+id/textView12"
+        android:layout_alignEnd="@+id/textView10" />
+
+    <Button
+        android:text="SAVE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button2"
+        android:background="@drawable/mybutton"
+        android:onClick="saveProfile"
+        app:layout_constraintLeft_toRightOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/editHg"
+        app:layout_constraintRight_toRightOf="@+id/textView8"
+        android:fontFamily="serif"
+        android:textSize="18sp"
+        android:textStyle="normal|bold"
+        android:textColor="@android:color/white"
+        android:layout_above="@+id/textAKG"
+        android:layout_toEndOf="@+id/editHg" />
+
+    <TextView
+        android:text="0"
+        android:layout_width="wrap_content"
+        android:layout_height="26dp"
+        android:id="@+id/textAKG"
+        android:fontFamily="serif"
+        android:textStyle="normal|bold"
+        android:textSize="18sp"
+        android:textColor="@android:color/holo_blue_dark"
+        app:layout_constraintLeft_toLeftOf="@+id/textBMR"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView11"
+        android:layout_below="@+id/textBMR"
+        android:layout_alignStart="@+id/textBMR" />
+
+    <TextView
+        android:text="0"
+        android:layout_width="wrap_content"
+        android:layout_height="28dp"
+        android:id="@+id/textIMT"
+        android:fontFamily="serif"
+        android:textStyle="normal|bold"
+        android:textSize="18sp"
+        android:textColor="@android:color/holo_blue_dark"
+        app:layout_constraintLeft_toLeftOf="@+id/textBMR"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView12"
+        android:layout_alignBaseline="@+id/btnSaveProfile"
+        android:layout_alignBottom="@+id/btnSaveProfile"
+        android:layout_alignStart="@+id/textAKG" />
+
+    <TextView
+        android:text="0"
+        android:layout_width="wrap_content"
+        android:layout_height="28dp"
+        android:id="@+id/textIdealWeight"
+        android:fontFamily="serif"
+        android:textStyle="normal|bold"
+        android:textSize="18sp"
+        android:textColor="@android:color/holo_blue_dark"
+        app:layout_constraintRight_toLeftOf="@+id/textView9"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView13"
+        android:layout_alignBaseline="@+id/textView6"
+        android:layout_alignBottom="@+id/textView6"
+        android:layout_alignStart="@+id/textBlood" />
+
+    <TextView
+        android:text="0"
+        android:layout_width="wrap_content"
+        android:layout_height="28dp"
+        android:id="@+id/textBlood"
+        android:fontFamily="serif"
+        android:textStyle="normal|bold"
+        android:textSize="18sp"
+        android:textColor="@android:color/holo_blue_dark"
+        app:layout_constraintRight_toLeftOf="@+id/textView9"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView13"
+        android:layout_alignBaseline="@+id/textView13"
+        android:layout_alignBottom="@+id/textView13"
+        android:layout_toEndOf="@+id/textView4" />
+
+    <TextView
+        android:text="0"
+        android:layout_width="wrap_content"
+        android:layout_height="28dp"
+        android:id="@+id/textBMR"
+        android:fontFamily="serif"
+        android:textStyle="normal|bold"
+        android:textSize="18sp"
+        android:textColor="@android:color/holo_blue_dark"
+        tools:layout_editor_absoluteX="105dp"
+        tools:layout_editor_absoluteY="364dp"
+        android:layout_alignBaseline="@+id/textView10"
+        android:layout_alignBottom="@+id/textView10"
+        android:layout_toEndOf="@+id/textView3" />
+
+    <EditText
+        android:layout_width="148dp"
+        android:layout_height="42dp"
+        android:inputType="textPersonName|number"
+        android:ems="10"
+        android:id="@+id/editPressure"
+        android:hint="Blood Pressure"
+        android:fontFamily="serif"
+        app:layout_constraintLeft_toLeftOf="@+id/editHeight"
+        app:layout_constraintTop_toBottomOf="@+id/editWeight"
+        android:layout_above="@+id/textView3"
+        android:layout_alignStart="@+id/editName" />
+
+    <TextView
+        android:text="Activity Level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView3"
+        android:fontFamily="serif"
+        android:textSize="18sp"
+        android:textStyle="normal|bold"
+        android:textColor="@color/colorPrimary"
+        android:layout_marginBottom="21dp"
+        android:layout_above="@+id/button2"
+        android:layout_alignStart="@+id/editPressure" />
+
+    <EditText
+        android:layout_width="215dp"
+        android:layout_height="42dp"
+        android:ems="10"
+        android:id="@+id/editHeight"
+        android:fontFamily="serif"
+        android:hint="Height"
+        app:layout_constraintTop_toBottomOf="@+id/editAge"
+        app:layout_constraintRight_toRightOf="@+id/editWeight"
+        android:inputType="numberDecimal"
+        android:layout_above="@+id/editPressure"
+        android:layout_alignStart="@+id/editPressure" />
+
+    <EditText
+        android:layout_width="215dp"
+        android:layout_height="42dp"
+        android:ems="10"
+        android:id="@+id/editWeight"
+        android:hint="Weight"
+        android:fontFamily="serif"
+        tools:layout_editor_absoluteY="176dp"
+        android:inputType="numberDecimal"
+        android:layout_above="@+id/editHeight"
+        android:layout_alignStart="@+id/editHeight" />
+
+    <EditText
+        android:layout_width="215dp"
+        android:layout_height="42dp"
+        android:inputType="textPersonName|number"
+        android:ems="10"
+        android:id="@+id/editAge"
+        android:hint="Age"
+        android:fontFamily="serif"
+        tools:layout_editor_absoluteY="131dp"
+        android:layout_x="20dp"
+        android:layout_y="135dp"
+        android:layout_above="@+id/editWeight"
+        android:layout_alignStart="@+id/editWeight" />
+
+    <TextView
+        android:layout_width="155dp"
+        android:layout_height="27dp"
+        android:id="@+id/textView4"
+        android:text="PROFILE"
+        android:fontFamily="serif"
+        android:textSize="24sp"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="normal|bold"
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="16dp"
+        android:layout_weight="1"
+        android:layout_marginStart="21dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="12dp" />
+
+    <EditText
+        android:layout_width="322dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/editName"
+        android:hint="Name"
+        android:fontFamily="serif"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintHorizontal_bias="0.3"
+        android:layout_above="@+id/radioGroup"
+        android:layout_alignStart="@+id/textView4" />
+
+    <RadioGroup
+        android:layout_width="331dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_x="20dp"
+        android:layout_y="103dp"
+        android:id="@+id/radioGroup"
+        android:layout_above="@+id/editAge"
+        android:layout_alignStart="@+id/textView11">
+
+        <RadioButton
+            android:text="Female"
+            android:layout_width="110dp"
+            android:layout_height="34dp"
+            android:id="@+id/radioFemale"
+            android:fontFamily="serif"
+            app:layout_constraintLeft_toLeftOf="@+id/editName"
+            app:layout_constraintRight_toRightOf="@+id/editName"
+            app:layout_constraintBaseline_toBaselineOf="@+id/radioMale"
+            android:textStyle="normal|bold"
+            android:textColor="@color/colorPrimary"
+            android:onClick="onRadioButtonClicked"
+            android:layout_alignBaseline="@+id/radioMale"
+            android:layout_alignBottom="@+id/radioMale"
+            android:layout_toEndOf="@+id/radioMale" />
+
+        <RadioButton
+        android:text="Male"
+        android:layout_width="110dp"
+        android:layout_height="34dp"
+        android:id="@+id/radioMale"
+        android:fontFamily="serif"
+        app:layout_constraintLeft_toLeftOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/editName"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="normal|bold"
+        android:onClick="onRadioButtonClicked"
+        android:layout_below="@+id/editName"
+        android:layout_alignStart="@+id/editName" />
+
+    </RadioGroup>
+
+    <TextView
+        android:text="Years"
+        android:layout_width="66dp"
+        android:layout_height="27dp"
+        android:id="@+id/textView14"
+        android:fontFamily="serif"
+        android:textSize="18sp"
+        android:textStyle="normal|bold"
+        android:textColor="@color/colorPrimary"
+        tools:layout_editor_absoluteX="247dp"
+        app:layout_constraintTop_toBottomOf="@+id/editName"
+        app:layout_constraintBottom_toBottomOf="@+id/textView5"
+        app:layout_constraintVertical_bias="0.110000014"
+        android:layout_alignBaseline="@+id/editAge"
+        android:layout_alignBottom="@+id/editAge"
+        android:layout_alignEnd="@+id/textView9" />
+
+    <TextView
+        android:text="Cm"
+        android:layout_width="46dp"
+        android:layout_height="26dp"
+        android:id="@+id/textView8"
+        android:textSize="18sp"
+        android:fontFamily="serif"
+        android:textStyle="normal|bold"
+        android:textColor="@color/colorPrimary"
+        android:textAlignment="viewStart"
+        tools:layout_editor_absoluteX="247dp"
+        tools:layout_editor_absoluteY="226dp"
+        android:layout_alignBaseline="@+id/editHeight"
+        android:layout_alignBottom="@+id/editHeight"
+        android:layout_alignStart="@+id/textView5" />
+
+    <TextView
+        android:text="mm"
+        android:layout_width="39dp"
+        android:layout_height="33dp"
+        android:id="@+id/textView7"
+        android:textSize="18sp"
+        android:fontFamily="serif"
+        android:textStyle="normal|bold"
+        android:textColor="@color/colorPrimary"
+        android:textAlignment="viewStart"
+        app:layout_constraintTop_toTopOf="@+id/editPressure"
+        app:layout_constraintRight_toLeftOf="@+id/textView5"
+        app:layout_constraintBottom_toBottomOf="@+id/editPressure"
+        android:layout_alignBottom="@+id/editPressure"
+        android:layout_toEndOf="@+id/editPressure" />
+
+    <EditText
+        android:layout_width="66dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName|number"
+        android:ems="10"
+        android:id="@+id/editHg"
+        android:hint="Hg"
+        android:fontFamily="serif"
+        tools:layout_editor_absoluteY="265dp"
+        app:layout_constraintLeft_toRightOf="@+id/editPressure"
+        android:layout_below="@+id/editHeight"
+        android:layout_toEndOf="@+id/textView7" />
+
+    <Spinner
+        android:layout_width="179dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner_activity"
+        android:entries="@array/activity_level"
+        android:layout_below="@+id/editPressure"
+        android:layout_alignEnd="@+id/editName" />
+
+</RelativeLayout>

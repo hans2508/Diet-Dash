@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.dash.dietdash.Login">
+
+    <EditText
+        android:layout_width="260dp"
+        android:layout_height="41dp"
+        android:ems="10"
+        android:id="@+id/editEmail"
+        android:hint="Username"
+        android:fontFamily="serif"
+        android:inputType="text"
+        app:layout_constraintLeft_toLeftOf="@+id/activity_login"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        android:layout_marginTop="16dp"
+        app:layout_constraintRight_toRightOf="@+id/activity_login" />
+
+    <EditText
+        android:layout_width="260dp"
+        android:layout_height="44dp"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/editPass"
+        android:hint="Password"
+        android:fontFamily="serif"
+        app:layout_constraintLeft_toLeftOf="@+id/activity_login"
+        app:layout_constraintTop_toBottomOf="@+id/editEmail"
+        android:layout_marginTop="8dp"
+        app:layout_constraintRight_toRightOf="@+id/activity_login" />
+
+    <Button
+        android:text="LOGIN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnLogin"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:onClick="login"
+        android:background="@drawable/mybutton"
+        android:fontFamily="serif"
+        android:textStyle="normal|bold"
+        app:layout_constraintLeft_toLeftOf="@+id/activity_login"
+        android:layout_marginStart="16dp"
+        app:layout_constraintRight_toRightOf="@+id/textView2"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnSignUp"
+        app:layout_constraintHorizontal_bias="1.0" />
+
+    <Button
+        android:text="SIGN UP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnSignUp"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:onClick="signup"
+        android:background="@drawable/mybutton"
+        android:fontFamily="serif"
+        android:textStyle="normal|bold"
+        app:layout_constraintLeft_toRightOf="@+id/btnLogin"
+        android:layout_marginStart="56dp"
+        app:layout_constraintTop_toBottomOf="@+id/editPass"
+        android:layout_marginTop="16dp" />
+
+    <TextView
+        android:text="LOGIN"
+        android:layout_width="98dp"
+        android:layout_height="37dp"
+        android:id="@+id/textView2"
+        android:fontFamily="serif"
+        android:textSize="24sp"
+        android:textStyle="normal|bold"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintLeft_toLeftOf="@+id/editEmail"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        android:layout_marginTop="24dp" />
+
+    <ImageView
+        android:layout_width="271dp"
+        android:layout_height="108dp"
+        app:srcCompat="@drawable/title"
+        android:id="@+id/imageView"
+        app:layout_constraintLeft_toLeftOf="@+id/activity_login"
+        android:layout_marginStart="16dp"
+        app:layout_constraintTop_toTopOf="@+id/activity_login"
+        android:layout_marginTop="16dp"
+        app:layout_constraintRight_toRightOf="@+id/activity_login"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintHorizontal_bias="0.47" />
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_root"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:weightSum="1">
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="INPUT MAKANAN BARU"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="18sp"
+        android:textColor="@color/colorPrimary"
+        android:fontFamily="serif"
+        android:textStyle="normal|bold" />
+
+    <EditText
+        android:id="@+id/editName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nama makanan"
+        android:fontFamily="serif"
+        android:textSize="15sp">
+    </EditText>
+
+    <EditText
+        android:id="@+id/editURT"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="URT (porsi)"
+        android:fontFamily="serif"
+        android:textSize="15sp">
+    </EditText>
+
+    <EditText
+        android:id="@+id/editWeight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Berat (g)"
+        android:fontFamily="serif"
+        android:textSize="15sp">
+    </EditText>
+
+    <EditText
+        android:id="@+id/editCarbs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Karbohidrat (g)"
+        android:fontFamily="serif"
+        android:textSize="15sp">
+    </EditText>
+
+    <EditText
+        android:id="@+id/editFat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Lemak (g)"
+        android:fontFamily="serif"
+        android:textSize="15sp">
+    </EditText>
+
+    <EditText
+        android:id="@+id/editProtein"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Protein (g)"
+        android:fontFamily="serif"
+        android:textSize="15sp">
+    </EditText>
+
+    <EditText
+        android:id="@+id/editCal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Kalori (kkal)"
+        android:fontFamily="serif"
+        android:textSize="15sp">
+    </EditText>
+
+    <EditText
+        android:id="@+id/editChol"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Kolesterol (mg)"
+        android:fontFamily="serif"
+        android:textSize="15sp">
+    </EditText>
+
+    <EditText
+        android:id="@+id/editSodium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Sodium (mg)"
+        android:fontFamily="serif"
+        android:textSize="15sp">
+    </EditText>
+
+    <EditText
+        android:id="@+id/editPotassium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Kalium (mg)"
+        android:fontFamily="serif"
+        android:textSize="16sp">
+    </EditText>
+
+    <EditText
+        android:id="@+id/editCalcium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Kalsium (mg)"
+        android:fontFamily="serif"
+        android:textSize="15sp">
+    </EditText>
+
+</LinearLayout>
