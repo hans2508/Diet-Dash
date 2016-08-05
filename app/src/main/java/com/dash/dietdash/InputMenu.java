@@ -1,48 +1,58 @@
 package com.dash.dietdash;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.GridView;
-
-import com.dash.adapter.GridViewAdapter;
-import com.dash.model.Day;
-
-import java.util.ArrayList;
+import android.support.v7.app.AppCompatActivity;
+import android.widget.CalendarView;
+import android.widget.CalendarView.OnDateChangeListener;
 
 public class InputMenu extends AppCompatActivity {
-
-    private ArrayList<Day> dayList = new ArrayList<>();
+    CalendarView calendar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_day);
 
-        dayList.add(new Day(1,R.drawable.day1));
-        dayList.add(new Day(2,R.drawable.day2));
-        dayList.add(new Day(3,R.drawable.day3));
-        dayList.add(new Day(4,R.drawable.day4));
-        dayList.add(new Day(5,R.drawable.day5));
-        dayList.add(new Day(6,R.drawable.day6));
-        dayList.add(new Day(7,R.drawable.day7));
+        //sets the main layout of the activity
+        setContentView(R.layout.activity_input_menu);
 
-        GridView gridView = (GridView) findViewById(R.id.gridView);
-        GridViewAdapter gridViewAdapter = new GridViewAdapter(InputMenu.this, R.layout.grid_view_item, dayList);
-        gridView.setAdapter(gridViewAdapter);
+        //initializes the calendarview
+        initializeCalendar();
+    }
 
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> adapterView, View v, int position, long id) {
-                Day d = (Day) adapterView.getItemAtPosition(position);
-                int day = d.getDay();
-                System.out.println("DAY ::: " + day);
+    public void initializeCalendar() {
+        calendar = (CalendarView) findViewById(R.id.calendar);
+
+        // sets whether to show the week number.
+        calendar.setShowWeekNumber(false);
+
+        // sets the first day of week according to Calendar.
+        // here we set Monday as the first day of the Calendar
+        calendar.setFirstDayOfWeek(2);
+
+        //The background color for the selected week.
+        calendar.setSelectedWeekBackgroundColor(getResources().getColor(R.color.lightblue));
+
+        //sets the color for the dates of an unfocused month.
+        calendar.setUnfocusedMonthDateColor(getResources().getColor(R.color.transparent));
+
+        //sets the color for the separator line between weeks.
+        calendar.setWeekSeparatorLineColor(getResources().getColor(R.color.transparent));
+
+        //sets the color for the vertical bar shown at the beginning and at the end of the selected date.
+        calendar.setSelectedDateVerticalBar(R.color.blue);
+
+        //sets the listener to be notified upon selected date change.
+        calendar.setOnDateChangeListener(new OnDateChangeListener() {
+            //show the selected date as a toast
+            @Override
+            public void onSelectedDayChange(CalendarView view, int year, int month, int day) {
+
+                String date = day + "-" + month + "-" + year;
                 Intent intent = new Intent(InputMenu.this, InputMenuDetail.class);
-                intent.putExtra("sentDay", String.valueOf(day));
+                intent.putExtra("date", date);
                 startActivity(intent);
             }
         });
     }
 }
-

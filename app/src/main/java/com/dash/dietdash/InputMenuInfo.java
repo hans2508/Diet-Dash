@@ -21,14 +21,13 @@ import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-import static android.R.attr.defaultValue;
 import static android.content.Context.MODE_PRIVATE;
 
 public class InputMenuInfo extends Fragment {
 
     private ListView listView;
     private ArrayList<Calory> listCal;
-    private int day;
+    private String date;
     private View header;
     protected final double CONST_SODIUM = 2300;
     protected final double CONST_CHOL = 300;
@@ -42,7 +41,7 @@ public class InputMenuInfo extends Fragment {
         View rootView = inflater.inflate(R.layout.activity_input_menu_info, null);
         header = (View) inflater.inflate(R.layout.list_view_header, null);
         Bundle bundle = this.getArguments();
-        day = bundle.getInt("day", defaultValue);
+        date = bundle.getString("date", "");
         getAllWidgets(rootView);
         return rootView;
     }
@@ -66,7 +65,7 @@ public class InputMenuInfo extends Fragment {
 
         // Get Input Makanan
         ArrayList<Makanan> listMakanan = new ArrayList<>();
-        listMakanan = dbHelper.getInputMakanan(userEmail, day);
+        listMakanan = dbHelper.getAllInputMakanan(userEmail, date);
 
         double totSodium = 0, totChol = 0, totCalcium = 0, totCarbs = 0, totPotassium = 0, totFat = 0, totProtein = 0, totCallory = 0;
         for (int i = 0; i < listMakanan.size(); i++) {
@@ -106,10 +105,13 @@ public class InputMenuInfo extends Fragment {
         } else {
             listInfo.add(new InfoMakanan("SODIUM", String.valueOf(totSodium) + " < " + CONST_SODIUM + " mg", 1));
         }
+        System.out.println("POTASIUM " + totPotassium);
         if (totPotassium <= CONST_POTASSIUM) {
             listInfo.add(new InfoMakanan("KALIUM", String.valueOf(totPotassium) + " < " + CONST_POTASSIUM + " mg", 0));
+            System.out.println("MASUK 0");
         } else {
             listInfo.add(new InfoMakanan("KALIUM", String.valueOf(totPotassium) + " < " + CONST_POTASSIUM + " mg", 1));
+            System.out.println("MASUK 1");
         }
         if (totCalcium <= CONST_CALCIUM) {
             listInfo.add(new InfoMakanan("KALSIUM", String.valueOf(totCalcium) + " < " + CONST_CALCIUM + " mg", 0));

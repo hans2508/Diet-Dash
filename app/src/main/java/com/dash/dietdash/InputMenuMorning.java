@@ -26,15 +26,14 @@ import com.dash.model.Menu;
 
 import java.util.ArrayList;
 
-import static android.R.attr.defaultValue;
 import static android.content.Context.MODE_PRIVATE;
 
-public class InputMenuList extends Fragment {
+public class InputMenuMorning extends Fragment {
 
     private ListView listView;
     private ArrayList<Makanan> listMakanan = new ArrayList<>();
     ArrayList<Integer> listRow = new ArrayList<>();
-    private int day;
+    private String date;
     private View header;
     private View rootView;
     private DataBaseHelper dbHelper;
@@ -46,11 +45,11 @@ public class InputMenuList extends Fragment {
         rootView = inflater.inflate(R.layout.activity_input_menu_list, null);
         listView = (ListView) rootView.findViewById(R.id.list);
         header = (View) inflater.inflate(R.layout.list_view_header, null);
-        ((TextView) header.findViewById(R.id.txtHeader)).setText("MENU PILIHANMU HARI INI");
+        ((TextView) header.findViewById(R.id.txtHeader)).setText("MENU SARAPAN PILIHANMU");
         listView.addHeaderView(header);
 
         Bundle bundle = this.getArguments();
-        day = bundle.getInt("day", defaultValue);
+        date = bundle.getString("date", "");
         getAllWidgets(rootView);
         return rootView;
     }
@@ -93,7 +92,8 @@ public class InputMenuList extends Fragment {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     String food = arrayAdapter.getItem(which);
-                                    dbHelper.addInputMakanan(userEmail, day, food);
+                                    System.out.println("MAKANAN: " + food);
+                                    dbHelper.addInputMakanan(userEmail, date, food, "Morning");
                                     getAllWidgets(rootView);
                                 }
                             });
@@ -107,8 +107,8 @@ public class InputMenuList extends Fragment {
             }
         });
 
-        listMakanan = dbHelper.getInputMakanan(userEmail, day);
-        listRow = dbHelper.getRowID(userEmail, day);
+        listMakanan = dbHelper.getInputMakanan(userEmail, date, "Morning");
+        listRow = dbHelper.getRowID(userEmail, date, "Morning");
         InputMenuListAdapter listViewAdapter = new InputMenuListAdapter(InputMenuDetail.getInstance(), listMakanan);
         listView.setAdapter(listViewAdapter);
 

@@ -54,23 +54,28 @@ public class PressureListAdapter extends BaseAdapter {
             assert view != null;
 
             holder.txtPressure = (TextView) view.findViewById(R.id.txtPressure);
+            holder.txtPressurePrev = (TextView) view.findViewById(R.id.txtPressure);
             holder.txtInfo = (TextView) view.findViewById(R.id.txtInfo);
             holder.imgIcon = (ImageView) view.findViewById(R.id.imgIcon);
             view.setTag(holder);
         } else {
             holder = (Holder) view.getTag();
         }
-        holder.txtPressure.setText("PRESSURE : " + listPressure.get(position).getSystolic() + "/" + listPressure.get(position).getDiastolic());
-        holder.txtInfo.setText("-> " + listPressure.get(position).getInfo());
-        if (listPressure.get(position).getInfo().equals("NAIK")) {
+        holder.txtPressurePrev.setText(listPressure.get(position).getDatePrev() + "   " + listPressure.get(position).getSystolicPrev() + "/" + listPressure.get(position).getDiastolicPrev());
+        holder.txtPressure.setText(listPressure.get(position).getDate() + "   " + listPressure.get(position).getSystolic() + "/" + listPressure.get(position).getDiastolic());
+        holder.txtInfo.setText("NOTE : " + listPressure.get(position).getInfo());
+        if(listPressure.get(position).getInfo().equals("NAIK")){
             holder.txtInfo.setTextColor(Color.RED);
+        } else{
+            holder.txtInfo.setTextColor(Color.BLUE);
         }
-        holder.imgIcon.setImageResource(listPressure.get(position).getImage());
+        holder.imgIcon.setImageResource(R.drawable.day1);
         return view;
     }
 
     static class Holder {
         TextView txtPressure;
+        TextView txtPressurePrev;
         TextView txtInfo;
         ImageView imgIcon;
     }

@@ -7,28 +7,35 @@ package com.dash.model;
 public class Pressure {
 
     private String email;
-    private int day;
     private int systolic;
     private int diastolic;
     private int image;
     private String info;
     private String date;
+    private int systolicPrev;
+    private int diastolicPrev;
+    private String datePrev;
 
-    public Pressure(String email, int day, int systolic, int diastolic, String date) {
+    public Pressure(String email, int systolic, int diastolic, String date, int systolicPrev, int diastolicPrev, String datePrev) {
         this.email = email;
-        this.day = day;
         this.systolic = systolic;
         this.diastolic = diastolic;
         this.date = date;
+        this.systolicPrev = systolicPrev;
+        this.diastolicPrev = diastolicPrev;
+        this.datePrev = datePrev;
     }
 
-    public Pressure(int day, int systolic, int diastolic, int image, String info, String date) {
-        this.day = day;
+    public Pressure(String email, int systolic, int diastolic, int image, String info, String date, int systolicPrev, int diastolicPrev, String datePrev) {
+        this.email = email;
         this.systolic = systolic;
         this.diastolic = diastolic;
         this.image = image;
         this.info = info;
         this.date = date;
+        this.systolicPrev = systolicPrev;
+        this.diastolicPrev = diastolicPrev;
+        this.datePrev = datePrev;
     }
 
     public String getEmail() {
@@ -37,14 +44,6 @@ public class Pressure {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public int getDay() {
-        return day;
-    }
-
-    public void setDay(int day) {
-        this.day = day;
     }
 
     public int getSystolic() {
@@ -85,5 +84,29 @@ public class Pressure {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public int getSystolicPrev() {
+        return systolicPrev;
+    }
+
+    public void setSystolicPrev(int systolicPrev) {
+        this.systolicPrev = systolicPrev;
+    }
+
+    public int getDiastolicPrev() {
+        return diastolicPrev;
+    }
+
+    public void setDiastolicPrev(int diastolicPrev) {
+        this.diastolicPrev = diastolicPrev;
+    }
+
+    public String getDatePrev() {
+        return datePrev;
+    }
+
+    public void setDatePrev(String datePrev) {
+        this.datePrev = datePrev;
     }
 }

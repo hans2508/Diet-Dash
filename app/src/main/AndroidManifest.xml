@@ -22,23 +22,12 @@
         <activity android:name=".Schedule" />
         <activity android:name=".Diary" />
         <activity android:name=".DetailSchedule" />
-        <activity android:name=".DetailBreakfast" />
-        <activity android:name=".DetailLunch" />
-        <activity android:name=".DetailDinner" />
-        <activity android:name=".DetailNutrition" />
-        <activity android:name=".DetailFruitMorning" />
-        <activity android:name=".DetailFruitEvening" />
-        <activity android:name=".DetailSnack" />
         <activity android:name=".InputMenu" />
         <activity android:name=".InputMenuDetail" />
-        <activity android:name=".InputMenuInfo" />
-        <activity android:name=".InputMenuList" />
         <activity android:name=".Admin" />
         <activity android:name=".UsersProfile" />
-        <activity android:name=".UsersProfileDay" />
+        <activity android:name=".UsersProfileListDetail" />
         <activity android:name=".UsersProfileDetail" />
-        <activity android:name=".UsersProfilePressure" />
-        <activity android:name=".UsersProfileList" />
         <activity android:name=".NewMakanan"></activity>
     </application>
 

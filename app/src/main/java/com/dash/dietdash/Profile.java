@@ -20,6 +20,8 @@ import com.dash.model.User;
 
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class Profile extends AppCompatActivity implements OnItemSelectedListener {
 
@@ -120,7 +122,11 @@ public class Profile extends AppCompatActivity implements OnItemSelectedListener
 
 
         // Save Profile to database
-        User user = new User(userEmail, "", name, gender, age, weight, height, pressure, hg, activity);
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        String date = sdf.format(calendar.getTime());
+
+        User user = new User(userEmail, "", name, gender, age, weight, height, pressure, hg, activity, date);
         DataBaseHelper dbHelper = new DataBaseHelper(this);
         dbHelper.openDataBase();
         dbHelper.addProfile(user);

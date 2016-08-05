@@ -16,6 +16,7 @@ public class User {
     private int pressure;
     private int hg;
     private String activity;
+    private String date;
 
     public User() {
     }
@@ -25,7 +26,7 @@ public class User {
         this.password = password;
     }
 
-    public User(String email, String password, String name, int gender, int age, double weight, double height, int pressure, int hg, String activity) {
+    public User(String email, String password, String name, int gender, int age, double weight, double height, int pressure, int hg, String activity, String date) {
         this.email = email;
         this.password = password;
         this.name = name;
@@ -36,6 +37,7 @@ public class User {
         this.pressure = pressure;
         this.hg = hg;
         this.activity = activity;
+        this.date = date;
     }
 
     public String getEmail() {
@@ -116,5 +118,13 @@ public class User {
 
     public void setActivity(String activity) {
         this.activity = activity;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

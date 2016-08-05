@@ -43,24 +43,6 @@ public class UsersProfilePressure extends Fragment {
 
         ArrayList<Pressure> listPressure = new ArrayList<>();
         listPressure = dbHelper.getPressure(email);
-        for (int i = 0; i < listPressure.size(); i++) {
-            switch (listPressure.get(i).getDay()){
-                case 1 : listPressure.get(i).setImage(R.drawable.day1);
-                    break;
-                case 2 : listPressure.get(i).setImage(R.drawable.day2);
-                    break;
-                case 3 : listPressure.get(i).setImage(R.drawable.day3);
-                    break;
-                case 4 : listPressure.get(i).setImage(R.drawable.day4);
-                    break;
-                case 5 : listPressure.get(i).setImage(R.drawable.day5);
-                    break;
-                case 6 : listPressure.get(i).setImage(R.drawable.day6);
-                    break;
-                case 7 : listPressure.get(i).setImage(R.drawable.day7);
-                    break;
-            }
-        }
 
         PressureListAdapter listViewAdapter = new PressureListAdapter(UsersProfileDetail.getInstance(), listPressure);
         ((TextView) header.findViewById(R.id.txtHeader)).setText("TEKANAN DARAH HARIAN");

@@ -8,6 +8,21 @@
     tools:context="com.dash.dietdash.Main">
 
     <Button
+        android:text="INPUT PRESSURE"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnInputPressure"
+        android:background="@drawable/mybutton"
+        android:fontFamily="serif"
+        android:textSize="14sp"
+        android:textStyle="normal|bold"
+        android:textColor="@android:color/white"
+        android:onClick="menu_input_pressure"
+        app:layout_constraintTop_toBottomOf="@+id/btnInputMenu"
+        android:layout_marginTop="16dp"
+        app:layout_constraintRight_toRightOf="@+id/btnInputMenu" />
+
+    <Button
         android:text="INPUT MENU"
         android:layout_width="110dp"
         android:layout_height="wrap_content"
@@ -23,8 +38,8 @@
         app:layout_constraintRight_toRightOf="@+id/btnDiary" />
 
     <ImageView
-        android:layout_width="271dp"
-        android:layout_height="108dp"
+        android:layout_width="225dp"
+        android:layout_height="76dp"
         app:srcCompat="@drawable/title"
         android:id="@+id/imageView2"
         app:layout_constraintLeft_toLeftOf="@+id/activity_main"
@@ -45,7 +60,7 @@
         android:onClick="menu_profile"
         app:layout_constraintLeft_toLeftOf="@+id/activity_main"
         app:layout_constraintTop_toTopOf="@+id/activity_main"
-        android:layout_marginTop="144dp"
+        android:layout_marginTop="112dp"
         app:layout_constraintRight_toRightOf="@+id/activity_main" />
 
     <Button
@@ -88,7 +103,8 @@
         android:textStyle="normal|bold"
         android:textColor="@android:color/white"
         android:onClick="menu_about"
-        app:layout_constraintTop_toBottomOf="@+id/btnInputMenu"
+        app:layout_constraintLeft_toLeftOf="@+id/activity_main"
+        app:layout_constraintTop_toBottomOf="@+id/btnInputPressure"
         android:layout_marginTop="16dp"
-        app:layout_constraintRight_toRightOf="@+id/btnInputMenu" />
+        app:layout_constraintRight_toRightOf="@+id/activity_main" />
 </android.support.constraint.ConstraintLayout>

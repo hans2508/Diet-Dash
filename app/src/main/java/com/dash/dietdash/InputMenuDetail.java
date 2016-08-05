@@ -12,9 +12,11 @@ public class InputMenuDetail extends AppCompatActivity {
 
     public static InputMenuDetail instance;
     private InputMenuInfo inputMenuInfo;
-    private InputMenuList inputMenuList;
+    private InputMenuMorning inputMenuMorning;
+    private InputMenuLunch inputMenuLunch;
+    private InputMenuDinner inputMenuDinner;
     private TabLayout allTabs;
-    private int day;
+    private String date;
     private Bundle bundle;
 
     @Override
@@ -23,7 +25,7 @@ public class InputMenuDetail extends AppCompatActivity {
         setContentView(R.layout.activity_tab);
 
         Intent intent = getIntent();
-        day = Integer.parseInt(intent.getStringExtra("sentDay"));
+        date = intent.getStringExtra("date");
         instance=this;
         getAllWidgets();
         bindWidgetsWithAnEvent();
@@ -37,10 +39,14 @@ public class InputMenuDetail extends AppCompatActivity {
     }
     private void setupTabLayout() {
         inputMenuInfo = new InputMenuInfo();
-        inputMenuList = new InputMenuList();
+        inputMenuMorning = new InputMenuMorning();
+        inputMenuLunch = new InputMenuLunch();
+        inputMenuDinner = new InputMenuDinner();
 
-        allTabs.addTab(allTabs.newTab().setText("INFORMATIONS"),true);
-        allTabs.addTab(allTabs.newTab().setText("INPUT MENU"));
+        allTabs.addTab(allTabs.newTab().setText("INFORMASI"),true);
+        allTabs.addTab(allTabs.newTab().setText("SARAPAN"));
+        allTabs.addTab(allTabs.newTab().setText("MAKAN SIANG"));
+        allTabs.addTab(allTabs.newTab().setText("MAKAN MALAM"));
     }
     private void bindWidgetsWithAnEvent()
     {
@@ -63,15 +69,27 @@ public class InputMenuDetail extends AppCompatActivity {
         {
             case 0 :
                 bundle = new Bundle();
-                bundle.putInt("day", day);
+                bundle.putString("date", date);
                 inputMenuInfo.setArguments(bundle);
                 replaceFragment(inputMenuInfo);
                 break;
             case 1 :
                 bundle = new Bundle();
-                bundle.putInt("day", day);
-                inputMenuList.setArguments(bundle);
-                replaceFragment(inputMenuList);
+                bundle.putString("date", date);
+                inputMenuMorning.setArguments(bundle);
+                replaceFragment(inputMenuMorning);
+                break;
+            case 2 :
+                bundle = new Bundle();
+                bundle.putString("date", date);
+                inputMenuLunch.setArguments(bundle);
+                replaceFragment(inputMenuLunch);
+                break;
+            case 3 :
+                bundle = new Bundle();
+                bundle.putString("date", date);
+                inputMenuDinner.setArguments(bundle);
+                replaceFragment(inputMenuDinner);
                 break;
         }
     }

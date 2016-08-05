@@ -113,7 +113,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 User user = new User(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getInt(3), cursor.getInt(4),
-                        cursor.getDouble(5), cursor.getDouble(6), cursor.getInt(7), cursor.getInt(8), cursor.getString(9));
+                        cursor.getDouble(5), cursor.getDouble(6), cursor.getInt(7), cursor.getInt(8), cursor.getString(9), cursor.getString(10));
 
                 // Adding contact to list
                 listUser.add(user);
@@ -137,7 +137,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             cursor.moveToFirst();
 
         user = new User(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getInt(3), cursor.getInt(4),
-                cursor.getDouble(5), cursor.getDouble(6), cursor.getInt(7), cursor.getInt(8), cursor.getString(9));
+                cursor.getDouble(5), cursor.getDouble(6), cursor.getInt(7), cursor.getInt(8), cursor.getString(9), cursor.getString(10));
         cursor.close();
         db.close();
         return user;
@@ -205,6 +205,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         values.put("Pressure", user.getPressure());
         values.put("Hg", user.getHg());
         values.put("Activity", user.getActivity());
+        values.put("Date", user.getDate());
 
         db.update("User", values, "Email=?", new String[]{user.getEmail()});
         db.close();
@@ -213,46 +214,30 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     // Getting Diary Data
     public ArrayList<Pressure> getPressure(String email) {
 
-        ArrayList<Pressure> listDiary = new ArrayList<Pressure>();
+        ArrayList<Pressure> listPressure = new ArrayList<Pressure>();
         String selectQuery = "SELECT * FROM Pressure WHERE Email='" + email + "'";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
-        int i = 0;
         if (cursor.moveToFirst()) {
             do {
-                Pressure pressure = new Pressure(cursor.getString(0), cursor.getInt(1), cursor.getInt(2), cursor.getInt(3), cursor.getString(4));
-                switch (pressure.getDay()) {
-                    case 1:
-                        pressure.setImage(R.drawable.day1);
-                        pressure.setInfo("BELUM ADA");
-                        break;
-                    case 2:
-                        pressure.setImage(R.drawable.day2);
-                        break;
-                    case 3:
-                        pressure.setImage(R.drawable.day3);
-                        break;
-                    case 4:
-                        pressure.setImage(R.drawable.day4);
-                        break;
-                    case 5:
-                        pressure.setImage(R.drawable.day5);
-                        break;
-                    case 6:
-                        pressure.setImage(R.drawable.day6);
-                        break;
-                    case 7:
-                        pressure.setImage(R.drawable.day7);
-                        break;
+                Pressure pressure = new Pressure(cursor.getString(0), cursor.getInt(1), cursor.getInt(2), cursor.getString(3),
+                        cursor.getInt(4), cursor.getInt(5), cursor.getString(6));
+                if (pressure.getSystolic() < pressure.getSystolicPrev() ||
+                        pressure.getDiastolic() < pressure.getDiastolicPrev()) {
+                    pressure.setInfo("TURUN");
+                } else if (pressure.getSystolic() > pressure.getSystolicPrev() ||
+                        pressure.getDiastolic() > pressure.getDiastolicPrev()) {
+                    pressure.setInfo("NAIK");
+                } else {
+                    pressure.setInfo("TETAP");
                 }
-                i++;
                 // Adding contact to list
-                listDiary.add(pressure);
+                listPressure.add(pressure);
             } while (cursor.moveToNext());
         }
         db.close();
         // return contact list
-        return listDiary;
+        return listPressure;
     }
 
     // Adding new Diary
@@ -261,9 +246,11 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put("Email", pressure.getEmail());
         values.put("Date", pressure.getDate());
-        values.put("Day", pressure.getDay());
         values.put("Systolic", pressure.getSystolic());
         values.put("Diastolic", pressure.getDiastolic());
+        values.put("DatePrev", pressure.getDatePrev());
+        values.put("SystolicPrev", pressure.getSystolicPrev());
+        values.put("DiastolicPrev", pressure.getDiastolicPrev());
 
         db.insert("Pressure", null, values);
         db.close();
@@ -309,19 +296,19 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    // Getting Input Makanan
-    public ArrayList<Makanan> getInputMakanan(String email, int day) {
+    // Getting All Input Makanan
+    public ArrayList<Makanan> getAllInputMakanan(String email, String date) {
 
         ArrayList<Makanan> listMakanan = new ArrayList<>();
-        String selectQuery = "SELECT * FROM Input_Makanan i, Makanan m WHERE i.email='" + email + "' AND i.day = " + day +
-                " AND i.food = m.food";
+        String selectQuery = "SELECT * FROM Input_Makanan i, Makanan m WHERE i.email='" + email + "' AND i.date = '" + date +
+                "' AND i.food = m.food";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor.moveToFirst()) {
             do {
-                Makanan makanan = new Makanan(cursor.getString(3), cursor.getInt(4), cursor.getString(5), cursor.getDouble(6),
-                        cursor.getDouble(7), cursor.getDouble(8), cursor.getDouble(9), cursor.getDouble(10), cursor.getDouble(11),
-                        cursor.getDouble(12), cursor.getDouble(13));
+                Makanan makanan = new Makanan(cursor.getString(4), cursor.getInt(5), cursor.getString(6), cursor.getDouble(7),
+                        cursor.getDouble(8), cursor.getDouble(9), cursor.getDouble(10), cursor.getDouble(11), cursor.getDouble(12),
+                        cursor.getDouble(13), cursor.getDouble(14));
                 listMakanan.add(makanan);
             } while (cursor.moveToNext());
         }
@@ -330,16 +317,55 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return listMakanan;
     }
 
-    public ArrayList<Integer> getRowID(String email, int day){
+    // Getting Input Makanan
+    public ArrayList<Makanan> getInputMakanan(String email, String date, String type) {
+
+        ArrayList<Makanan> listMakanan = new ArrayList<>();
+        String selectQuery = "SELECT * FROM Input_Makanan i, Makanan m WHERE i.email='" + email + "' AND i.date = '" + date +
+                "' AND i.type = '" + type + "' AND i.food = m.food";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                Makanan makanan = new Makanan(cursor.getString(4), cursor.getInt(5), cursor.getString(6), cursor.getDouble(7),
+                        cursor.getDouble(8), cursor.getDouble(9), cursor.getDouble(10), cursor.getDouble(11), cursor.getDouble(12),
+                        cursor.getDouble(13), cursor.getDouble(14));
+                listMakanan.add(makanan);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return listMakanan;
+    }
+
+    // Getting Input Makanan
+    public ArrayList<String> getInputMakananDay(String email) {
+
+        ArrayList<String> listDay = new ArrayList<>();
+        String selectQuery = "SELECT DISTINCT(Date) FROM Input_Makanan WHERE email='" + email + "'";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                listDay.add(cursor.getString(0));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return listDay;
+    }
+
+    public ArrayList<Integer> getRowID(String email, String date, String type) {
 
         ArrayList<Integer> listRow = new ArrayList<>();
-        String selectQuery = "SELECT rowid FROM Input_Makanan WHERE email='" + email + "' AND day = " + day;
+        String selectQuery = "SELECT rowid FROM Input_Makanan WHERE email='" + email + "' AND date = '" + date + "' " +
+                "AND type = '" + type + "'";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor.moveToFirst()) {
             do {
                 listRow.add(cursor.getInt(0));
-            }while (cursor.moveToNext());
+            } while (cursor.moveToNext());
         }
         cursor.close();
         db.close();
@@ -347,22 +373,22 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
     // Adding new user
-    public void addInputMakanan(String userEmail, int day, String food) {
+    public void addInputMakanan(String userEmail, String date, String food, String type) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("Email", userEmail);
-        values.put("Day", day);
+        values.put("Date", date);
         values.put("Food", food);
+        values.put("Type", type);
 
         db.insert("Input_Makanan", null, values);
         db.close();
     }
 
     // Delete Input Makanan
-    public void deleteInputMakanan(int rowId)
-    {
+    public void deleteInputMakanan(int rowId) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete("Input_Makanan","rowid=?",new String[]{String.valueOf(rowId)});
+        db.delete("Input_Makanan", "rowid=?", new String[]{String.valueOf(rowId)});
     }
 
     // Getting Search Food
@@ -374,7 +400,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor.moveToFirst()) {
             do {
-                String temp = new String (cursor.getString(0));
+                String temp = new String(cursor.getString(0));
                 listSearch.add(temp);
             } while (cursor.moveToNext());
         }
@@ -394,10 +420,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
     // Delete Search Food
-    public void deleteSearchFood(String temp)
-    {
+    public void deleteSearchFood(String temp) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete("Search_Food","food=?",new String[]{temp});
+        db.delete("Search_Food", "food=?", new String[]{temp});
     }
 
 

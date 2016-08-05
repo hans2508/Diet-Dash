@@ -46,7 +46,7 @@ public class UsersProfile extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
 
                 User user = (User) adapterView.getItemAtPosition(position);
-                Intent intent = new Intent(UsersProfile.this, UsersProfileDay.class);
+                Intent intent = new Intent(UsersProfile.this, UsersProfileDetail.class);
                 intent.putExtra("email", user.getEmail());
                 startActivity(intent);
             }

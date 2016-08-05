@@ -17,13 +17,11 @@ import com.dash.model.Menu;
 
 import java.util.ArrayList;
 
-import static android.R.attr.defaultValue;
-
-public class UsersProfileList extends Fragment {
+public class UsersProfileListMorning extends Fragment {
 
     private ListView listView;
     private ArrayList<Makanan> listMakanan = new ArrayList<>();
-    private int day;
+    private String date;
     private String email;
     private View header;
     private View rootView;
@@ -36,7 +34,7 @@ public class UsersProfileList extends Fragment {
         rootView = inflater.inflate(R.layout.activity_users_profile_list, null);
         header = (View) inflater.inflate(R.layout.list_view_header, null);
         Bundle bundle = this.getArguments();
-        day = bundle.getInt("day", defaultValue);
+        date = bundle.getString("date", "");
         email = bundle.getString("email", "");
         getAllWidgets(rootView);
         return rootView;
@@ -47,9 +45,9 @@ public class UsersProfileList extends Fragment {
         dbHelper = new DataBaseHelper(getActivity());
         dbHelper.openDataBase();
 
-        listMakanan = dbHelper.getInputMakanan(email, day);
-        InputMenuListAdapter listViewAdapter = new InputMenuListAdapter(UsersProfileDetail.getInstance(), listMakanan);
-        ((TextView) header.findViewById(R.id.txtHeader)).setText("MENU PILIHAN USER");
+        listMakanan = dbHelper.getInputMakanan(email, date, "Morning");
+        InputMenuListAdapter listViewAdapter = new InputMenuListAdapter(UsersProfileListDetail.getInstance(), listMakanan);
+        ((TextView) header.findViewById(R.id.txtHeader)).setText("MENU SARAPAN PILIHAN USER");
         listView.addHeaderView(header);
         listView.setAdapter(listViewAdapter);
 

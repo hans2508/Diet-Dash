@@ -62,6 +62,8 @@ public class InfoMakananListAdapter extends BaseAdapter {
         holder.txtInfo.setText(listInfo.get(position).getInfo());
         if (listInfo.get(position).getStatus() == 1) {
             holder.txtInfo.setTextColor(Color.RED);
+        } else {
+            holder.txtInfo.setTextColor(Color.BLACK);
         }
         return view;
     }

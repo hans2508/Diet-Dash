@@ -8,13 +8,18 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
-public class UsersProfileDetail extends AppCompatActivity {
+/**
+ * Created by Hans CK on 05-Aug-16.
+ */
 
-    public static UsersProfileDetail instance;
-    private UsersProfilePressure usersProfilePressure;
-    private UsersProfileDay usersProfileDay;
+public class UsersProfileListDetail extends AppCompatActivity{
+
+    public static UsersProfileListDetail instance;
+    private UsersProfileListMorning usersProfileListMorning;
+    private UsersProfileListLunch usersProfileListLunch;
+    private UsersProfileListDinner usersProfileListDinner;
     private TabLayout allTabs;
-    private int day;
+    private String date;
     private String email;
     private Bundle bundle;
 
@@ -25,23 +30,27 @@ public class UsersProfileDetail extends AppCompatActivity {
 
         Intent intent = getIntent();
         email = intent.getStringExtra("email");
+        date = intent.getStringExtra("date");
+        System.out.println("DATE1 : " + date);
         instance=this;
         getAllWidgets();
         bindWidgetsWithAnEvent();
         setupTabLayout();
     }
-    public static UsersProfileDetail getInstance() {
+    public static UsersProfileListDetail getInstance() {
         return instance;
     }
     private void getAllWidgets() {
         allTabs = (TabLayout) findViewById(R.id.tabs);
     }
     private void setupTabLayout() {
-        usersProfilePressure = new UsersProfilePressure();
-        usersProfileDay = new UsersProfileDay();
+        usersProfileListMorning = new UsersProfileListMorning();
+        usersProfileListLunch = new UsersProfileListLunch();
+        usersProfileListDinner = new UsersProfileListDinner();
 
-        allTabs.addTab(allTabs.newTab().setText("PRESSURE"),true);
-        allTabs.addTab(allTabs.newTab().setText("LIST DAY"));
+        allTabs.addTab(allTabs.newTab().setText("SARAPAN"),true);
+        allTabs.addTab(allTabs.newTab().setText("MAKAN SIANG"));
+        allTabs.addTab(allTabs.newTab().setText("MAKAN MALAM"));
     }
     private void bindWidgetsWithAnEvent()
     {
@@ -65,14 +74,23 @@ public class UsersProfileDetail extends AppCompatActivity {
             case 0 :
                 bundle = new Bundle();
                 bundle.putString("email", email);
-                usersProfilePressure.setArguments(bundle);
-                replaceFragment(usersProfilePressure);
+                bundle.putString("date", date);
+                usersProfileListMorning.setArguments(bundle);
+                replaceFragment(usersProfileListMorning);
                 break;
             case 1 :
                 bundle = new Bundle();
                 bundle.putString("email", email);
-                usersProfileDay.setArguments(bundle);
-                replaceFragment(usersProfileDay);
+                bundle.putString("date", date);
+                usersProfileListLunch.setArguments(bundle);
+                replaceFragment(usersProfileListLunch);
+                break;
+            case 2 :
+                bundle = new Bundle();
+                bundle.putString("email", email);
+                bundle.putString("date", date);
+                usersProfileListDinner.setArguments(bundle);
+                replaceFragment(usersProfileListDinner);
                 break;
         }
     }
