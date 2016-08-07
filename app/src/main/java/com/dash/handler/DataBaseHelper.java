@@ -211,15 +211,15 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    // Adding new user
-    public void updatePressure(User user) {
+    // Update user pressure
+    public void updatePressure(Pressure pressure) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("Pressure", user.getPressure());
-        values.put("Hg", user.getHg());
-        values.put("Date", user.getDate());
+        values.put("Pressure", pressure.getSystolic());
+        values.put("Hg", pressure.getDiastolic());
+        values.put("Date", pressure.getDate());
 
-        db.update("User", values, "Email=?", new String[]{user.getEmail()});
+        db.update("User", values, "Email=?", new String[]{pressure.getEmail()});
         db.close();
     }
 

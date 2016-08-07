@@ -62,8 +62,8 @@ public class Main extends AppCompatActivity {
             Intent notificationIntent = new Intent(this,Main.class);
             PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,notificationIntent, 0);
             builder.setSmallIcon(R.drawable.logo_icon)
-                    .setContentTitle("Diet Hipertensi")
-                    .setContentText("Anda belum mencatat tekanan darah harian anda!")
+                    .setContentTitle("Healthy Diet")
+                    .setContentText("Anda belum input tekanan darah hari ini!")
                     .setContentIntent(pendingIntent);
             NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
             Notification notification = builder.getNotification();
@@ -139,7 +139,7 @@ public class Main extends AppCompatActivity {
                                             date, user.getPressure(), user.getHg(), user.getDate()
                                             );
                                     dbHelper.addPressure(temp);
-                                    dbHelper.updatePressure(user);
+                                    dbHelper.updatePressure(temp);
                                 } else {
                                     Toast.makeText(getBaseContext(), "Please fill in your pressure!", Toast.LENGTH_SHORT).show();
                                 }
