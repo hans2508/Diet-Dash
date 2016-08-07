@@ -19,9 +19,8 @@
 
     </LinearLayout>
 
-
     <TextView
-        android:id="@+id/txtPressure"
+        android:id="@+id/txtPressurePrev"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/thumbnail"
@@ -33,10 +32,11 @@
         android:textStyle="bold"/>
 
     <TextView
-        android:id="@+id/txtPressurePrev"
+        android:id="@+id/txtPressure"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/txtPressure"
+        android:layout_below="@id/txtPressurePrev"
+        android:layout_toRightOf="@+id/thumbnail"
         android:textColor="@color/colorPrimaryDark"
         android:layout_marginTop="5dip"
         android:typeface="sans"
@@ -47,7 +47,7 @@
         android:id="@+id/txtInfo"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/txtPressurePrev"
+        android:layout_below="@id/txtPressure"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="16dip"
         android:layout_marginTop="5dip"

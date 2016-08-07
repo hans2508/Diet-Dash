@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DietDash</string>
+    <string name="app_name">Healthy Diet</string>
     <string-array name="activity_level">
         <item>Choose activity</item>
         <item>Sedentary</item>

@@ -54,22 +54,23 @@ public class PressureListAdapter extends BaseAdapter {
             assert view != null;
 
             holder.txtPressure = (TextView) view.findViewById(R.id.txtPressure);
-            holder.txtPressurePrev = (TextView) view.findViewById(R.id.txtPressure);
+            holder.txtPressurePrev = (TextView) view.findViewById(R.id.txtPressurePrev);
             holder.txtInfo = (TextView) view.findViewById(R.id.txtInfo);
             holder.imgIcon = (ImageView) view.findViewById(R.id.imgIcon);
             view.setTag(holder);
         } else {
             holder = (Holder) view.getTag();
         }
-        holder.txtPressurePrev.setText(listPressure.get(position).getDatePrev() + "   " + listPressure.get(position).getSystolicPrev() + "/" + listPressure.get(position).getDiastolicPrev());
-        holder.txtPressure.setText(listPressure.get(position).getDate() + "   " + listPressure.get(position).getSystolic() + "/" + listPressure.get(position).getDiastolic());
+        holder.txtPressurePrev.setText(listPressure.get(position).getDatePrev() + "  :  " + listPressure.get(position).getSystolicPrev() + "/" + listPressure.get(position).getDiastolicPrev());
+        holder.txtPressure.setText(listPressure.get(position).getDate() + "  :  " + listPressure.get(position).getSystolic() + "/" + listPressure.get(position).getDiastolic());
         holder.txtInfo.setText("NOTE : " + listPressure.get(position).getInfo());
         if(listPressure.get(position).getInfo().equals("NAIK")){
             holder.txtInfo.setTextColor(Color.RED);
+            holder.imgIcon.setImageResource(R.drawable.face_worried);
         } else{
             holder.txtInfo.setTextColor(Color.BLUE);
+            holder.imgIcon.setImageResource(R.drawable.face_smile);
         }
-        holder.imgIcon.setImageResource(R.drawable.day1);
         return view;
     }
 

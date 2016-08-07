@@ -20,6 +20,8 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        ((EditText) findViewById(R.id.editEmail)).setText("");
+        ((EditText) findViewById(R.id.editPass)).setText("");
     }
 
     public void login(View view)

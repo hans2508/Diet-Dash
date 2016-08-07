@@ -8,95 +8,10 @@
     tools:context="com.dash.dietdash.Main">
 
     <Button
-        android:text="INPUT PRESSURE"
-        android:layout_width="110dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnInputPressure"
-        android:background="@drawable/mybutton"
-        android:fontFamily="serif"
-        android:textSize="14sp"
-        android:textStyle="normal|bold"
-        android:textColor="@android:color/white"
-        android:onClick="menu_input_pressure"
-        app:layout_constraintTop_toBottomOf="@+id/btnInputMenu"
-        android:layout_marginTop="16dp"
-        app:layout_constraintRight_toRightOf="@+id/btnInputMenu" />
-
-    <Button
-        android:text="INPUT MENU"
-        android:layout_width="110dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnInputMenu"
-        android:background="@drawable/mybutton"
-        android:fontFamily="serif"
-        android:textSize="14sp"
-        android:textStyle="normal|bold"
-        android:textColor="@android:color/white"
-        android:onClick="menu_input_menu"
-        app:layout_constraintTop_toBottomOf="@+id/btnDiary"
-        android:layout_marginTop="16dp"
-        app:layout_constraintRight_toRightOf="@+id/btnDiary" />
-
-    <ImageView
-        android:layout_width="225dp"
-        android:layout_height="76dp"
-        app:srcCompat="@drawable/title"
-        android:id="@+id/imageView2"
-        app:layout_constraintLeft_toLeftOf="@+id/activity_main"
-        app:layout_constraintTop_toTopOf="@+id/activity_main"
-        android:layout_marginTop="16dp"
-        app:layout_constraintRight_toRightOf="@+id/activity_main"
-        app:layout_constraintHorizontal_bias="0.47" />
-
-    <Button
-        android:text="PROFILE"
-        android:layout_width="110dp"
-        android:layout_height="50dp"
-        android:id="@+id/btnProfile"
-        android:background="@drawable/mybutton"
-        android:textStyle="normal|bold"
-        android:textColor="@android:color/white"
-        android:fontFamily="serif"
-        android:onClick="menu_profile"
-        app:layout_constraintLeft_toLeftOf="@+id/activity_main"
-        app:layout_constraintTop_toTopOf="@+id/activity_main"
-        android:layout_marginTop="112dp"
-        app:layout_constraintRight_toRightOf="@+id/activity_main" />
-
-    <Button
-        android:text="SCHEDULE"
-        android:layout_width="110dp"
-        android:layout_height="50dp"
-        android:id="@+id/btnSchedule"
-        android:background="@drawable/mybutton"
-        android:textStyle="normal|bold"
-        android:textColor="@android:color/white"
-        android:onClick="menu_schedule"
-        android:fontFamily="serif"
-        app:layout_constraintTop_toBottomOf="@+id/btnProfile"
-        android:layout_marginTop="16dp"
-        app:layout_constraintRight_toRightOf="@+id/btnProfile" />
-
-    <Button
-        android:text="DIARY"
-        android:layout_width="110dp"
-        android:layout_height="49dp"
-        android:id="@+id/btnDiary"
-        android:background="@drawable/mybutton"
-        android:textSize="14sp"
-        android:textStyle="normal|bold"
-        android:textColor="@android:color/white"
-        android:onClick="menu_diary"
-        android:fontFamily="serif"
-        app:layout_constraintTop_toBottomOf="@+id/btnSchedule"
-        android:layout_marginTop="16dp"
-        app:layout_constraintRight_toRightOf="@+id/btnSchedule" />
-
-    <Button
-        android:text="ABOUT"
-        android:layout_width="110dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnAbout"
+        android:text="LOGOUT"
+        android:layout_width="130dp"
+        android:layout_height="70dp"
+        android:id="@+id/btnLogout"
         android:background="@drawable/mybutton"
         android:fontFamily="serif"
         android:textSize="14sp"
@@ -104,7 +19,114 @@
         android:textColor="@android:color/white"
         android:onClick="menu_about"
         app:layout_constraintLeft_toLeftOf="@+id/activity_main"
-        app:layout_constraintTop_toBottomOf="@+id/btnInputPressure"
+        app:layout_constraintTop_toBottomOf="@+id/btnDiary"
+        android:layout_marginTop="8dp"
+        app:layout_constraintRight_toRightOf="@+id/activity_main"
+        app:layout_constraintBottom_toBottomOf="@+id/activity_main"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintVertical_bias="0.33" />
+
+    <Button
+        android:text="INPUT PRESSURE"
+        android:layout_width="130dp"
+        android:layout_height="70dp"
+        android:id="@+id/btnInputPressure"
+        android:background="@drawable/mybutton"
+        android:fontFamily="serif"
+        android:textSize="16sp"
+        android:textStyle="normal|bold"
+        android:textColor="@android:color/white"
+        android:onClick="menu_input_pressure"
+        app:layout_constraintTop_toBottomOf="@+id/btnSchedule"
         android:layout_marginTop="16dp"
+        app:layout_constraintRight_toRightOf="@+id/btnSchedule" />
+
+    <Button
+        android:text="INPUT MENU"
+        android:layout_width="130dp"
+        android:layout_height="70dp"
+        android:id="@+id/btnInputMenu"
+        android:background="@drawable/mybutton"
+        android:fontFamily="serif"
+        android:textSize="16sp"
+        android:textStyle="normal|bold"
+        android:textColor="@android:color/white"
+        android:onClick="menu_input_menu"
+        app:layout_constraintTop_toTopOf="@+id/btnInputPressure"
+        app:layout_constraintRight_toRightOf="@+id/btnProfile"
+        app:layout_constraintBottom_toBottomOf="@+id/btnInputPressure" />
+
+    <ImageView
+        android:layout_width="275dp"
+        android:layout_height="104dp"
+        app:srcCompat="@drawable/logo_diet"
+        android:id="@+id/imageView2"
+        app:layout_constraintLeft_toLeftOf="@+id/activity_main"
+        app:layout_constraintTop_toTopOf="@+id/activity_main"
         app:layout_constraintRight_toRightOf="@+id/activity_main" />
+
+    <Button
+        android:text="PROFILE"
+        android:layout_width="130dp"
+        android:layout_height="70dp"
+        android:id="@+id/btnProfile"
+        android:background="@drawable/mybutton"
+        android:textStyle="normal|bold"
+        android:textColor="@android:color/white"
+        android:fontFamily="serif"
+        android:onClick="menu_profile"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="@+id/activity_main"
+        android:layout_marginStart="32dp"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        android:layout_marginTop="16dp" />
+
+    <Button
+        android:text="SCHEDULE"
+        android:layout_width="130dp"
+        android:layout_height="70dp"
+        android:id="@+id/btnSchedule"
+        android:background="@drawable/mybutton"
+        android:textStyle="normal|bold"
+        android:textColor="@android:color/white"
+        android:onClick="menu_schedule"
+        android:fontFamily="serif"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        android:layout_marginTop="16dp"
+        app:layout_constraintRight_toRightOf="@+id/activity_main"
+        android:layout_marginEnd="32dp" />
+
+    <Button
+        android:text="HISTORY"
+        android:layout_width="130dp"
+        android:layout_height="70dp"
+        android:id="@+id/btnDiary"
+        android:background="@drawable/mybutton"
+        android:textSize="16sp"
+        android:textStyle="normal|bold"
+        android:textColor="@android:color/white"
+        android:onClick="menu_diary"
+        android:fontFamily="serif"
+        app:layout_constraintLeft_toLeftOf="@+id/activity_main"
+        android:layout_marginStart="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/btnInputMenu"
+        android:layout_marginTop="16dp"
+        app:layout_constraintRight_toRightOf="@+id/btnInputMenu"
+        app:layout_constraintHorizontal_bias="1.0" />
+
+    <Button
+        android:text="ABOUT"
+        android:layout_width="130dp"
+        android:layout_height="70dp"
+        android:id="@+id/btnAbout"
+        android:background="@drawable/mybutton"
+        android:fontFamily="serif"
+        android:textSize="14sp"
+        android:textStyle="normal|bold"
+        android:textColor="@android:color/white"
+        android:onClick="menu_about"
+        app:layout_constraintTop_toTopOf="@+id/btnDiary"
+        app:layout_constraintRight_toRightOf="@+id/btnInputPressure"
+        app:layout_constraintBottom_toBottomOf="@+id/btnDiary" />
 </android.support.constraint.ConstraintLayout>

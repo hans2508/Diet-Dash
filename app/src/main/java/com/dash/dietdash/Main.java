@@ -61,7 +61,7 @@ public class Main extends AppCompatActivity {
             Notification.Builder builder = new Notification.Builder(Main.this);
             Intent notificationIntent = new Intent(this,Main.class);
             PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,notificationIntent, 0);
-            builder.setSmallIcon(R.drawable.day1)
+            builder.setSmallIcon(R.drawable.logo_icon)
                     .setContentTitle("Diet Hipertensi")
                     .setContentText("Anda belum mencatat tekanan darah harian anda!")
                     .setContentIntent(pendingIntent);
@@ -86,7 +86,7 @@ public class Main extends AppCompatActivity {
 
     public void menu_diary(View view) {
 
-        Intent intent = new Intent(Main.this, Diary.class);
+        Intent intent = new Intent(Main.this, History.class);
         startActivity(intent);
     }
 
@@ -99,6 +99,12 @@ public class Main extends AppCompatActivity {
     public void menu_input_menu(View view) {
 
         Intent intent = new Intent(Main.this, InputMenu.class);
+        startActivity(intent);
+    }
+
+    public void menu_logout(View view) {
+
+        Intent intent = new Intent(Main.this, Login.class);
         startActivity(intent);
     }
 
@@ -133,6 +139,7 @@ public class Main extends AppCompatActivity {
                                             date, user.getPressure(), user.getHg(), user.getDate()
                                             );
                                     dbHelper.addPressure(temp);
+                                    dbHelper.updatePressure(user);
                                 } else {
                                     Toast.makeText(getBaseContext(), "Please fill in your pressure!", Toast.LENGTH_SHORT).show();
                                 }

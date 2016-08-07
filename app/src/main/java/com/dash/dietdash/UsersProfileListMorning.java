@@ -59,7 +59,7 @@ public class UsersProfileListMorning extends Fragment {
                 Menu menu = new Menu(0, 0, "", m.getFood(), m.getWeight(), m.getUrt(), m.getCarbs(), m.getFat(), m.getProtein(),
                         m.getCalory(), m.getChol(), m.getSodium(), m.getPotassium(), m.getCalcium());
                 menu.setImage(R.drawable.food);
-                NutritionAlertAdapter alert = new NutritionAlertAdapter(UsersProfileDetail.getInstance(), menu);
+                NutritionAlertAdapter alert = new NutritionAlertAdapter(UsersProfileListDetail.getInstance(), menu);
             }
         });
         dbHelper.close();

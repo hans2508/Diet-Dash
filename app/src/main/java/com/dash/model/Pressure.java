@@ -9,7 +9,6 @@ public class Pressure {
     private String email;
     private int systolic;
     private int diastolic;
-    private int image;
     private String info;
     private String date;
     private int systolicPrev;
@@ -20,18 +19,6 @@ public class Pressure {
         this.email = email;
         this.systolic = systolic;
         this.diastolic = diastolic;
-        this.date = date;
-        this.systolicPrev = systolicPrev;
-        this.diastolicPrev = diastolicPrev;
-        this.datePrev = datePrev;
-    }
-
-    public Pressure(String email, int systolic, int diastolic, int image, String info, String date, int systolicPrev, int diastolicPrev, String datePrev) {
-        this.email = email;
-        this.systolic = systolic;
-        this.diastolic = diastolic;
-        this.image = image;
-        this.info = info;
         this.date = date;
         this.systolicPrev = systolicPrev;
         this.diastolicPrev = diastolicPrev;
@@ -60,14 +47,6 @@ public class Pressure {
 
     public void setDiastolic(int diastolic) {
         this.diastolic = diastolic;
-    }
-
-    public int getImage() {
-        return image;
-    }
-
-    public void setImage(int image) {
-        this.image = image;
     }
 
     public String getInfo() {

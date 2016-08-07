@@ -31,7 +31,6 @@ public class UsersProfileListDetail extends AppCompatActivity{
         Intent intent = getIntent();
         email = intent.getStringExtra("email");
         date = intent.getStringExtra("date");
-        System.out.println("DATE1 : " + date);
         instance=this;
         getAllWidgets();
         bindWidgetsWithAnEvent();

@@ -211,7 +211,19 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    // Getting Diary Data
+    // Adding new user
+    public void updatePressure(User user) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("Pressure", user.getPressure());
+        values.put("Hg", user.getHg());
+        values.put("Date", user.getDate());
+
+        db.update("User", values, "Email=?", new String[]{user.getEmail()});
+        db.close();
+    }
+
+    // Getting History Data
     public ArrayList<Pressure> getPressure(String email) {
 
         ArrayList<Pressure> listPressure = new ArrayList<Pressure>();
@@ -240,7 +252,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return listPressure;
     }
 
-    // Adding new Diary
+    // Adding new History
     public void addPressure(Pressure pressure) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
