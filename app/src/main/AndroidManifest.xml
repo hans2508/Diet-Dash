@@ -22,14 +22,15 @@
         <activity android:name=".Schedule" />
         <activity android:name=".History" />
         <activity android:name=".DetailSchedule" />
+        <activity android:name=".ScheduleDay" />
         <activity android:name=".InputMenu" />
         <activity android:name=".InputMenuDetail" />
         <activity android:name=".Admin" />
         <activity android:name=".UsersProfile" />
-        <activity android:name=".HistoryListDay"/>
+        <activity android:name=".HistoryListDay" />
         <activity android:name=".UsersProfileListDetail" />
         <activity android:name=".UsersProfileDetail" />
-        <activity android:name=".NewMakanan"></activity>
+        <activity android:name=".NewMakanan" />
     </application>
 
 </manifest>

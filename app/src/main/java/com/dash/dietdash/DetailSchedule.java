@@ -12,6 +12,7 @@ public class DetailSchedule extends AppCompatActivity {
 
     public static DetailSchedule instance;
     private DetailNutrition detailNutrition;
+    private DetailNutritionHistory detailNutritionHistory;
     private DetailBreakfast detailBreakfast;
     private DetailFruitMorning detailFruitMorning;
     private DetailLunch detailLunch;
@@ -19,8 +20,9 @@ public class DetailSchedule extends AppCompatActivity {
     private DetailDinner detailDinner;
     private DetailSnack detailSnack;
     private TabLayout allTabs;
-    private int day;
+    private int day, status;
     private Bundle bundle;
+    private String date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,8 @@ public class DetailSchedule extends AppCompatActivity {
 
         Intent intent = getIntent();
         day = Integer.parseInt(intent.getStringExtra("sentDay"));
+        status = Integer.parseInt(intent.getStringExtra("status"));
+        date = intent.getStringExtra("date");
         instance=this;
         getAllWidgets();
         bindWidgetsWithAnEvent();
@@ -41,6 +45,7 @@ public class DetailSchedule extends AppCompatActivity {
         allTabs = (TabLayout) findViewById(R.id.tabs);
     }
     private void setupTabLayout() {
+        detailNutritionHistory = new DetailNutritionHistory();
         detailNutrition = new DetailNutrition();
         detailBreakfast = new DetailBreakfast();
         detailFruitMorning = new DetailFruitMorning();
@@ -79,8 +84,14 @@ public class DetailSchedule extends AppCompatActivity {
             case 0 :
                 bundle = new Bundle();
                 bundle.putInt("day", day);
-                detailNutrition.setArguments(bundle);
-                replaceFragment(detailNutrition);
+                bundle.putString("date", date);
+                if(status == 1) {
+                    detailNutritionHistory.setArguments(bundle);
+                    replaceFragment(detailNutritionHistory);
+                } else {
+                    detailNutrition.setArguments(bundle);
+                    replaceFragment(detailNutrition);
+                }
                 break;
             case 1 :
                 bundle = new Bundle();

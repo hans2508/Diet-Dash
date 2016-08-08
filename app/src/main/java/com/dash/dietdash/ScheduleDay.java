@@ -5,16 +5,15 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.CalendarView;
-import android.widget.CalendarView.OnDateChangeListener;
-import android.widget.Toast;
-
-import com.dash.handler.DataBaseHelper;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 
-public class InputMenu extends AppCompatActivity {
+/**
+ * Created by Hans CK on 09-Aug-16.
+ */
+
+public class ScheduleDay extends AppCompatActivity {
 
     private CalendarView calendar;
     private String userEmail;
@@ -55,7 +54,7 @@ public class InputMenu extends AppCompatActivity {
         calendar.setSelectedDateVerticalBar(R.color.blue);
 
         //sets the listener to be notified upon selected date change.
-        calendar.setOnDateChangeListener(new OnDateChangeListener() {
+        calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             //show the selected date as a toast
             @Override
             public void onSelectedDayChange(CalendarView view, int year, int month, int day) {
@@ -66,23 +65,10 @@ public class InputMenu extends AppCompatActivity {
                 String[] date1 = date.split("-");
                 String temp = day + "-" + date1[1] + "-" + year;
 
-                DataBaseHelper dbHelper = new DataBaseHelper(InputMenu.this);
-                ArrayList<String> list = dbHelper.getAlternatifDate(userEmail);
-                boolean status = true;
-                for (int i = 0; i < list.size(); i++) {
+                Intent intent = new Intent(ScheduleDay.this, Schedule.class);
+                intent.putExtra("date", temp);
+                startActivity(intent);
 
-                    if (list.get(i).equals(temp)) {
-                        status = false;
-                    }
-                }
-                if (status == true) {
-
-                    Intent intent = new Intent(InputMenu.this, InputMenuDetail.class);
-                    intent.putExtra("date", temp);
-                    startActivity(intent);
-                } else {
-                    Toast.makeText(getBaseContext(), "Anda sudah memasukkan menu rekomendasi untuk hari ini!", Toast.LENGTH_SHORT).show();
-                }
             }
         });
     }

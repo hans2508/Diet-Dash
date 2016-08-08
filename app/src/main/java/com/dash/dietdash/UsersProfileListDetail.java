@@ -15,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 public class UsersProfileListDetail extends AppCompatActivity{
 
     public static UsersProfileListDetail instance;
+    private UsersProfileListMenuInfo inputMenuInfo;
     private UsersProfileListMorning usersProfileListMorning;
     private UsersProfileListLunch usersProfileListLunch;
     private UsersProfileListDinner usersProfileListDinner;
@@ -46,8 +47,10 @@ public class UsersProfileListDetail extends AppCompatActivity{
         usersProfileListMorning = new UsersProfileListMorning();
         usersProfileListLunch = new UsersProfileListLunch();
         usersProfileListDinner = new UsersProfileListDinner();
+        inputMenuInfo = new UsersProfileListMenuInfo();
 
-        allTabs.addTab(allTabs.newTab().setText("SARAPAN"),true);
+        allTabs.addTab(allTabs.newTab().setText("INFO"),true);
+        allTabs.addTab(allTabs.newTab().setText("SARAPAN"));
         allTabs.addTab(allTabs.newTab().setText("MAKAN SIANG"));
         allTabs.addTab(allTabs.newTab().setText("MAKAN MALAM"));
     }
@@ -74,17 +77,24 @@ public class UsersProfileListDetail extends AppCompatActivity{
                 bundle = new Bundle();
                 bundle.putString("email", email);
                 bundle.putString("date", date);
+                inputMenuInfo.setArguments(bundle);
+                replaceFragment(inputMenuInfo);
+                break;
+            case 1 :
+                bundle = new Bundle();
+                bundle.putString("email", email);
+                bundle.putString("date", date);
                 usersProfileListMorning.setArguments(bundle);
                 replaceFragment(usersProfileListMorning);
                 break;
-            case 1 :
+            case 2 :
                 bundle = new Bundle();
                 bundle.putString("email", email);
                 bundle.putString("date", date);
                 usersProfileListLunch.setArguments(bundle);
                 replaceFragment(usersProfileListLunch);
                 break;
-            case 2 :
+            case 3 :
                 bundle = new Bundle();
                 bundle.putString("email", email);
                 bundle.putString("date", date);

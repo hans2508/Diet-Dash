@@ -14,7 +14,7 @@
         android:id="@+id/btnLogout"
         android:background="@drawable/mybutton"
         android:fontFamily="serif"
-        android:textSize="14sp"
+        android:textSize="16sp"
         android:textStyle="normal|bold"
         android:textColor="@android:color/white"
         android:onClick="menu_logout"

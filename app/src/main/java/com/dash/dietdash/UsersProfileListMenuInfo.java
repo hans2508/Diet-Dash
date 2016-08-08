@@ -1,6 +1,5 @@
 package com.dash.dietdash;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -21,14 +20,17 @@ import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-import static android.content.Context.MODE_PRIVATE;
+/**
+ * Created by Hans CK on 09-Aug-16.
+ */
 
-public class InputMenuInfo extends Fragment {
+public class UsersProfileListMenuInfo extends Fragment {
 
     private ListView listView;
     private ArrayList<Calory> listCal;
-    private String date, email;
+    private String date;
     private View header;
+    private String email;
     protected final double CONST_SODIUM = 2300;
     protected final double CONST_CHOL = 300;
     protected final double CONST_CALCIUM = 808;
@@ -42,6 +44,7 @@ public class InputMenuInfo extends Fragment {
         header = (View) inflater.inflate(R.layout.list_view_header, null);
         Bundle bundle = this.getArguments();
         date = bundle.getString("date", "");
+        email = bundle.getString("email", "");
         getAllWidgets(rootView);
         return rootView;
     }
@@ -49,9 +52,6 @@ public class InputMenuInfo extends Fragment {
     private void getAllWidgets(View view) {
 
         listView = (ListView) view.findViewById(R.id.listInputMenuInfo);
-        SharedPreferences userDetails = getActivity().getSharedPreferences("dietPrefs", MODE_PRIVATE);
-        email = userDetails.getString("emailKey", "");
-
 
         DataBaseHelper dbHelper = new DataBaseHelper(getActivity());
         dbHelper.openDataBase();
@@ -120,7 +120,7 @@ public class InputMenuInfo extends Fragment {
             listInfo.add(new InfoMakanan("KALSIUM", String.valueOf(totCalcium) + " < " + CONST_CALCIUM + " mg", 1));
         }
 
-        InfoMakananListAdapter listViewAdapter = new InfoMakananListAdapter(InputMenuDetail.getInstance(), listInfo);
+        InfoMakananListAdapter listViewAdapter = new InfoMakananListAdapter(UsersProfileListDetail.getInstance(), listInfo);
         ((TextView) header.findViewById(R.id.txtHeader)).setText("PANDUAN NUTRISI HARIAN ANDA");
         listView.addHeaderView(header);
         listView.setAdapter(listViewAdapter);

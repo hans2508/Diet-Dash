@@ -61,7 +61,7 @@ public class Login extends AppCompatActivity {
             }
             dbHelper.close();
         } else{
-            Toast.makeText(getBaseContext(), "Please fill in the Emai and Password!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getBaseContext(), "Please fill in the Email and Password!", Toast.LENGTH_SHORT).show();
         }
     }
 

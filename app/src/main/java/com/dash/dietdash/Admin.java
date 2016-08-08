@@ -24,4 +24,10 @@ public class Admin extends AppCompatActivity {
         Intent intent = new Intent(Admin.this, UsersProfile.class);
         startActivity(intent);
     }
+
+    public void menu_logout_admin(View view)
+    {
+        Intent intent = new Intent(Admin.this, Login.class);
+        startActivity(intent);
+    }
 }

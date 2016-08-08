@@ -19,6 +19,7 @@ public class UsersProfileDay extends Fragment {
 
     private ListView listView;
     private ArrayList<String> listDay = new ArrayList<>();
+    private ArrayList<String> listAlternatif = new ArrayList<>();
     private String email;
     private View header;
     private View rootView;
@@ -42,7 +43,16 @@ public class UsersProfileDay extends Fragment {
         dbHelper.openDataBase();
 
         listDay = dbHelper.getInputMakananDay(email);
-        DayListAdapter listViewAdapter = new DayListAdapter(UsersProfileDetail.getInstance(), listDay);
+        listAlternatif = dbHelper.getAlternatifDate(email);
+
+        ArrayList<String> listTemp = new ArrayList<>();
+        for (int i=0; i<listDay.size(); i++){
+            listTemp.add(listDay.get(i));
+        }
+        for (int i=0; i<listAlternatif.size(); i++){
+            listTemp.add(listAlternatif.get(i));
+        }
+        DayListAdapter listViewAdapter = new DayListAdapter(UsersProfileDetail.getInstance(), listTemp);
         ((TextView) header.findViewById(R.id.txtHeader)).setText("TANGGAL TERISI");
         listView.addHeaderView(header);
         listView.setAdapter(listViewAdapter);

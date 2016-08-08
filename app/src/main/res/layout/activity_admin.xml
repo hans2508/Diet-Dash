@@ -8,8 +8,23 @@
     tools:context="com.dash.dietdash.Main">
 
     <Button
+        android:text="LOGOUT"
+        android:layout_width="170dp"
+        android:layout_height="51dp"
+        android:id="@+id/btnLogoutAdmin"
+        android:background="@drawable/mybutton"
+        android:fontFamily="serif"
+        android:textSize="14sp"
+        android:textStyle="normal|bold"
+        android:textColor="@android:color/white"
+        android:onClick="menu_logout_admin"
+        app:layout_constraintTop_toBottomOf="@+id/btnUsersProfile"
+        android:layout_marginTop="96dp"
+        app:layout_constraintRight_toRightOf="@+id/btnUsersProfile" />
+
+    <Button
         android:text="INSERT NEW FOOD"
-        android:layout_width="156dp"
+        android:layout_width="170dp"
         android:layout_height="51dp"
         android:id="@+id/btnInsertNewFood"
         android:background="@drawable/mybutton"
@@ -25,7 +40,7 @@
     <ImageView
         android:layout_width="271dp"
         android:layout_height="108dp"
-        app:srcCompat="@drawable/title"
+        app:srcCompat="@drawable/logo_diet"
         android:id="@+id/imageView2"
         app:layout_constraintLeft_toLeftOf="@+id/activity_main"
         app:layout_constraintTop_toTopOf="@+id/activity_main"
@@ -35,7 +50,7 @@
 
     <Button
         android:text="USERS PROFILE"
-        android:layout_width="156dp"
+        android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:id="@+id/btnUsersProfile"
         android:background="@drawable/mybutton"

@@ -80,7 +80,7 @@ public class Main extends AppCompatActivity {
 
     public void menu_schedule(View view) {
 
-        Intent intent = new Intent(Main.this, Schedule.class);
+        Intent intent = new Intent(Main.this, ScheduleDay.class);
         startActivity(intent);
     }
 

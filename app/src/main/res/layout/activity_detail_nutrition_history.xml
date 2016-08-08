@@ -4,18 +4,6 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
-    <Button
-    android:text="CATAT / SIMPAN"
-    android:layout_width="fill_parent"
-    android:layout_height="50dp"
-    android:id="@+id/btnCatat"
-    android:background="@drawable/mybutton"
-    android:fontFamily="serif"
-    android:textSize="17sp"
-    android:textStyle="normal|bold"
-    android:textColor="@android:color/white"
-    android:onClick="menu_catat" />
-
     <ListView
         android:id="@+id/listNutrition"
         android:layout_width="fill_parent"

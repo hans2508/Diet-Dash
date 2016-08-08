@@ -77,7 +77,7 @@ public class NutritionListAdapter extends BaseAdapter {
                 break;
         }
         holder.txtCalory.setText("Total callory : " + String.valueOf(listCal.get(position).getCalories()) + " kkal");
-        holder.imgIcon.setImageResource(R.drawable.food);
+        holder.imgIcon.setImageResource(R.drawable.info);
         return view;
     }
 

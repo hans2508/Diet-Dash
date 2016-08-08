@@ -1,6 +1,5 @@
 package com.dash.dietdash;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -21,9 +20,11 @@ import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-import static android.content.Context.MODE_PRIVATE;
+/**
+ * Created by Hans CK on 08-Aug-16.
+ */
 
-public class InputMenuInfo extends Fragment {
+public class UsersProfileListInfo extends Fragment {
 
     private ListView listView;
     private ArrayList<Calory> listCal;
@@ -42,6 +43,7 @@ public class InputMenuInfo extends Fragment {
         header = (View) inflater.inflate(R.layout.list_view_header, null);
         Bundle bundle = this.getArguments();
         date = bundle.getString("date", "");
+        email = bundle.getString("email", "");
         getAllWidgets(rootView);
         return rootView;
     }
@@ -49,9 +51,6 @@ public class InputMenuInfo extends Fragment {
     private void getAllWidgets(View view) {
 
         listView = (ListView) view.findViewById(R.id.listInputMenuInfo);
-        SharedPreferences userDetails = getActivity().getSharedPreferences("dietPrefs", MODE_PRIVATE);
-        email = userDetails.getString("emailKey", "");
-
 
         DataBaseHelper dbHelper = new DataBaseHelper(getActivity());
         dbHelper.openDataBase();

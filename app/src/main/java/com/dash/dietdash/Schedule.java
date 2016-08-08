@@ -22,6 +22,9 @@ public class Schedule extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_day);
 
+        Intent intent = getIntent();
+        final String date = intent.getStringExtra("date");
+
         dayList.add(new Day(1,R.drawable.day1));
         dayList.add(new Day(2,R.drawable.day2));
         dayList.add(new Day(3,R.drawable.day3));
@@ -40,6 +43,8 @@ public class Schedule extends AppCompatActivity {
                 int day = d.getDay();
                 Intent intent = new Intent(Schedule.this, DetailSchedule.class);
                 intent.putExtra("sentDay", String.valueOf(day));
+                intent.putExtra("status", String.valueOf(0));
+                intent.putExtra("date", date);
                 startActivity(intent);
             }
         });

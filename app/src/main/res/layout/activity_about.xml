@@ -10,11 +10,10 @@
     <ImageView
         android:layout_width="271dp"
         android:layout_height="108dp"
-        app:srcCompat="@drawable/title"
+        app:srcCompat="@drawable/logo_diet"
         android:id="@+id/imageView"
         app:layout_constraintLeft_toLeftOf="@+id/activity_about"
         app:layout_constraintTop_toTopOf="@+id/activity_about"
-        android:layout_marginTop="16dp"
         app:layout_constraintRight_toRightOf="@+id/activity_about" />
 
     <TextView

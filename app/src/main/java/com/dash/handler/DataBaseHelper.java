@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.dash.dietdash.R;
+import com.dash.model.Alternative;
 import com.dash.model.Calory;
 import com.dash.model.Makanan;
 import com.dash.model.Menu;
@@ -421,6 +422,53 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return listSearch;
     }
 
+    // Adding Alternatif
+    public void addAlternative(Alternative alternative) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("Email", alternative.getEmail());
+        values.put("Category", alternative.getCategory());
+        values.put("Day", alternative.getDay());
+        values.put("Date", alternative.getDate());
+
+        db.insert("Alternatif", null, values);
+        db.close();
+    }
+
+    // Getting Alternatif
+    public ArrayList<String> getAlternatifDate(String email) {
+
+        ArrayList<String> listDay = new ArrayList<>();
+        String selectQuery = "SELECT DISTINCT(Date) FROM Alternatif WHERE email='" + email + "'";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                listDay.add(cursor.getString(0));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return listDay;
+    }
+
+    // Getting Alternatif
+    public ArrayList<Alternative> getAlternatif(String email) {
+
+        ArrayList<Alternative> listAl = new ArrayList<>();
+        String selectQuery = "SELECT * FROM Alternatif WHERE email='" + email + "'";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                listAl.add(new Alternative(cursor.getString(0), cursor.getInt(1), cursor.getInt(2), cursor.getString(3)));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return listAl;
+    }
+
     // Adding Search Food
     public void addSearchFood(String food) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -437,7 +485,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.delete("Search_Food", "food=?", new String[]{temp});
     }
 
-
+    // Getting Image Food
     private int getImageFood(String food) {
         int image = 0;
         switch (food) {
